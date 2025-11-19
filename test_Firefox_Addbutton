@@ -1,0 +1,40 @@
+from selenium import webdriver
+
+from selenium.webdriver.common.by import By
+import pytest
+
+@pytest.fixture()
+def firefox():
+    #initialize a chrome driver
+    driver = webdriver.Firefox()
+    driver.maximize_window()
+    yield driver
+    #driver.quit()
+
+#Logging in
+def test_button(firefox):
+    firefox.get("https://practicetestautomation.com/practice-test-login/")
+    firefox.implicitly_wait(10)
+    firefox.maximize_window()
+
+#Locating elements
+    Username = firefox.find_element(by=By.ID, value="username")
+    Password = firefox.find_element(by=By.NAME, value="password")
+    Submit = firefox.find_element(by=By.XPATH, value="//*[@id='submit']")
+
+#Populating username and password fields
+    Username.send_keys("student")
+    Password.send_keys("Password123")
+
+    Submit.click()
+
+#Locating link elements
+    link_element = firefox.find_element(by=By.XPATH, value="//*[@id='menu-item-20']/a")
+    link_element.click()
+
+    link_element2 = firefox.find_element(by=By.XPATH, value="//*[@id='loop-container']/div/article/div[2]/div[2]/div[1]/p/a")
+    link_element2.click()
+
+#Clicking Add button
+    Add = firefox.find_element(by=By.ID, value="add_btn")
+    Add.click()
