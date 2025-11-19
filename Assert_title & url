@@ -1,0 +1,18 @@
+from selenium import webdriver
+
+from selenium.webdriver.common.by import By
+import pytest
+
+#Asserting title
+def test_1L(chrome):
+    chrome.get("https://www.linkedin.com/home")
+    title = chrome.title
+    assert title == "LinkedIn: Log In or Sign Up"
+
+#Asserting url
+def test_2M(chrome):
+    chrome.get("https://musandiwasdaughter.blogspot.com/")
+    url = chrome.current_url
+    assert url == "https://musandiwasdaughter.blogspot.com/"
+
+
