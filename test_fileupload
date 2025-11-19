@@ -1,0 +1,21 @@
+from selenium import webdriver
+
+from selenium.webdriver.common.by import By
+import pytest
+
+@pytest.fixture()
+def firefox():
+    #initialize a chrome driver
+    driver = webdriver.Firefox()
+    driver.maximize_window()
+    yield driver
+    #driver.quit()
+
+def test_FileUpload(firefox):
+    firefox.get("https://www.admlucid.com/Home/WebElements")
+    FileUpload1 = firefox.find_element(by=By.ID, value="File1")
+    FileUpload2 = firefox.find_element(by=By.NAME, value="File2")
+    file_path = "C:\\Users\\AFARISAHO\\Downloads\\testupload.jpg"
+    file_path2 = "C:\\Users\\AFARISAHO\\Downloads\\testupload2.pdf"
+    FileUpload1.send_keys(file_path)
+    FileUpload2.send_keys(file_path2)
