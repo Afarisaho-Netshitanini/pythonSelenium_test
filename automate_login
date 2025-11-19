@@ -1,0 +1,18 @@
+from selenium import webdriver
+
+from selenium.webdriver.common.by import By
+import pytest
+
+#Automating login
+def test_login(chrome):
+    chrome.get("https://practicetestautomation.com/practice-test-login/")
+    chrome.maximize_window()
+
+    Username = chrome.find_element(by=By.ID, value="username")
+    Password = chrome.find_element(by=By.NAME, value="password")
+    Submit = chrome.find_element(by=By.XPATH, value="//*[@id='submit']")
+
+    Username.send_keys("student")
+    Password.send_keys("Password123")
+
+    Submit.click()
