@@ -1,0 +1,20 @@
+from selenium import webdriver
+
+from selenium.webdriver.common.by import By
+import pytest
+
+@pytest.fixture()
+def firefox():
+    #initialize a chrome driver
+    driver = webdriver.Firefox()
+    driver.maximize_window()
+    yield driver
+    #driver.quit()
+
+def test_Checkbox(firefox):
+    firefox.get("https://www.admlucid.com/Home/WebElements")
+    firefox.implicitly_wait(10)
+    Checkbox2 = firefox.find_element(by=By.NAME, value="Checkbox2")
+    Checkbox2.click()
+    firefox.save_screenshot("google_admlucid_screenshot.png")
+    print("Screenshot of Admlucid homepage saved as google_admlucid_screenshot.png")
