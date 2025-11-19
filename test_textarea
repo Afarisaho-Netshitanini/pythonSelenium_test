@@ -1,0 +1,12 @@
+from selenium import webdriver
+
+from selenium.webdriver.common.by import By
+import pytest
+
+def test_textarea1(chrome):
+    chrome.get("https://textarea.online/")
+    chrome.maximize_window()
+    Textarea = chrome.find_element(by=By.ID, value="textarea")
+    Textarea.clear()
+    s = "Selenium was originally developed by Jason Huggins in 2004 as an internal tool at ThoughtWorks. Selenium is an open source. Originally It provides a recording and playback for functional tests. It consists of Selenium IDE, Selenium Grid, Selenium RC and Selenium Web Driver. Selenium has web browser compatibility, that is it can work on Chrome, Firefox, Edge, Opera, htmlunit, etc. Selenium also has multi system compatibility, it can work in Windows, Mac, and Linux. Selenium works well with multiple programming languages, such as Java, C#, Python, Ruby, and PHP. Selenium is mainly used to test web browsers for use interface functional tests. Selenium has its own methods and commands to operate on web elements for implementation of web browser testing. We will discuss selenium automation testing as following aspects: basic of Selenium and set up Selenium-Java-Maven Test Projects. Selenium has commands to operate web elements:"
+    Textarea.send_keys(s)
